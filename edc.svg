@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" 
-  width="300" height="300">
+  width="100%" height="100%">
   <script type="text/ecmascript" xlink:href="edc_code.js" />
   <g id="firstGroup">
-    <rect id="field" width="100" height="50" 
+    <rect id="field" width="400" height="400" 
      x="40" y="20" fill="blue" />
-    <text x="40" y="100" onclick="highten()">More Height</text>
-    <text x="40" y="120" onclick="widden()">More Length</text>
+    <text x="40" y="500" onclick="highten()">More Height</text>
+    <text x="40" y="520" onclick="widden()">More Length</text>
   </g>
 </svg>
