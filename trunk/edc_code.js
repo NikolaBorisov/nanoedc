@@ -1,8 +1,8 @@
 /**
- * widden
- * @param {void} evt 
+ * NanoEDC, Team 2 Project
  */
  
+ //Namespace
  var svgNS = "http://www.w3.org/2000/svg";
  
  function widden() {
@@ -32,7 +32,7 @@
   	  	
   }
   
-  function create()
+  function partition_field()
   {
 	  var n = 4, size = 20, dist = 5;
 	  var xStart = 600, yStart = 20;
