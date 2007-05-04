@@ -6,10 +6,13 @@
   width="100%" height="100%">
   <script type="text/ecmascript" xlink:href="edc_code.js" />
   <g id="firstGroup">
-    <rect id="field" width="400" height="400" 
-     x="40" y="20" fill="blue" />
-    <text x="40" y="500" onclick="highten()">More Height</text>
-    <text x="40" y="520" onclick="widden()">More Length</text>
-    <text x="40" y="540" onclick="create()">Create</text>
+    <rect id="field" width="40%" height="40%" 
+     x="4%" y="2%" fill="blue" />
+    <text x="4%" y="50%" onclick="highten()">More Height</text>
+    <text x="4%" y="52%" onclick="widden()">More Length</text>
+    <text x="4%" y="54%" onclick="create()">Create</text>
+  </g>
+  <g id="secondGroup">
+  	
   </g>
 </svg>
