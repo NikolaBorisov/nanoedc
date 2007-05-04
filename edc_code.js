@@ -32,9 +32,13 @@
   	  	
   }
   
-  function partition_field()
+  function create_sq()
   {
-	  var n = 4, size = 20, dist = 5;
+	  alert("HI");
+	  var box = document.forms[0].sl;
+	  var n = box.options[box.selectedIndex].value
+	  alert(n);
+	  var size = 20, dist = 5;
 	  var xStart = 600, yStart = 20;
 	  var i, j;
 	  
