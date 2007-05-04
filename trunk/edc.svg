@@ -10,5 +10,6 @@
      x="40" y="20" fill="blue" />
     <text x="40" y="500" onclick="highten()">More Height</text>
     <text x="40" y="520" onclick="widden()">More Length</text>
+    <text x="40" y="540" onclick="create()">Create</text>
   </g>
 </svg>
