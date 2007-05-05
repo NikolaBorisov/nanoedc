@@ -2,42 +2,18 @@
  * NanoEDC, Team 2 Project
  */
  
- //Namespace
- var svgNS = "http://www.w3.org/2000/svg";
- 
- function widden() {
- 	var rect, width, height;
- 	
- 	rect = document.getElementById("field");
- 	width = parseInt(rect.getAttributeNS(null, "width"));
- 	height = parseInt(rect.getAttributeNS(null, "height"));
- 	width += 4;
- 	height -= 4;
- 	rect.setAttributeNS(null, "width", width.toString(10))
- 	rect.setAttributeNS(null, "height", height.toString(10))
- }
- 
- /**
-  */
-  function highten() {
-  	var rect, width, height;
- 	
- 	rect = document.getElementById("firstGroup");
- 	width = parseInt(rect.getAttributeNS(null, "width"));
- 	height = parseInt(rect.getAttributeNS(null, "height"));
- 	width -= 4;
- 	height += 4;
- 	rect.setAttributeNS(null, "width", width.toString(10))
- 	rect.setAttributeNS(null, "height", height.toString(10))
-  	  	
-  }
-  
+//Namespace
+var svgNS = "http://www.w3.org/2000/svg";
+
+
+/*
+ * Deleting the elements on the right side of the screan.
+ */  
 function clean_right()
 {
 	var gr, i;
   	
   	gr = document.getElementById("secondGroup");
-  	alert(gr.childNodes.length.toString(10));
   	for (i=gr.childNodes.length-1 ; i>=0 ; i-- )
   		gr.removeChild(gr.childNodes[i]);
 }
