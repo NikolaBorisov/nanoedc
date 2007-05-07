@@ -14,10 +14,8 @@
   <br />
   <g id="firstGroup">
     <rect id="field" width="300" height="300" 
-     x="5%" y="6%" fill="blue" />
-    <text x="4%" y="50%" onclick="highten()">More Height</text>
-    <text x="4%" y="52%" onclick="widden()">More Length</text>
-    <text x="4%" y="54%" onclick="create()">Create</text>
+        x="5%" y="6%" fill="blue" >
+    </rect>
   </g>
   <g id="secondGroup">
   </g>
