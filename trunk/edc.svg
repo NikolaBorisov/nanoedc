@@ -4,17 +4,23 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" 
   width="100%" height="100%">
+  <defs>
+    <pattern id="waterPattern" patternUnits="userSpaceOnUse"
+             x="0" y="0" width="504" height="504" >
+      <image id="check" x="0" y="0" width="504" height="504" xlink:href="pattern_water.png" />
+    </pattern> 
+  </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
+  <rect id="water" width="100%" height="60%" x="0" y="0" fill="url(#waterPattern)" />
   <g id="menu">
   	<g id="button1" onclick="start()">
   	  <rect width="5%" height="2%" x="2%" y="2%" fill="red" />
   	  <text x="2%" y="3.9%">Start</text> 
   	</g>
   </g>
-  <br />
   <g id="firstGroup">
     <rect id="field" width="300" height="300" 
-        x="5%" y="6%" fill="blue" >
+        x="5%" y="6%" fill="white" >
     </rect>
   </g>
   <g id="secondGroup">
