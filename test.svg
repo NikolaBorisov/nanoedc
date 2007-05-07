@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="600px" height="500px" viewBox="0 0 600 500"
+xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="RectanglePattern" patternUnits="userSpaceOnUse"
+x="0" y="0" width="100" height="50" >
+<rect x="0" y="0" width="10" height="5" fill="red"/>
+</pattern>
+</defs>
+<rect fill="none" stroke="red"
+x="1" y="1" width="598" height="498"/>
+<ellipse fill="url(#RectanglePattern)" stroke="black" stroke-width="5"
+cx="300" cy="200" rx="250" ry="150" />
+</svg>
