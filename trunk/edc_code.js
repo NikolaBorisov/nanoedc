@@ -15,7 +15,18 @@ function clean_right()
   	
   	gr = document.getElementById("secondGroup");
   	for (i=gr.childNodes.length-1 ; i>=0 ; i-- )
-  		gr.removeChild(gr.childNodes[i]);
+   		gr.removeChild(gr.childNodes.item(i));
+        
+}
+
+function add_animation_for_big() {
+    var rect = document.getElementById("field");
+    var anim = document.createElement("animation");
+    anim.setAttribute("attributeName","width");
+    anim.setAttribute("from","300");
+    anim.setAttribute("to","0");
+    anim.setAttribute("dur","5s");
+    rect.appendChild(anim);
 }
   
 function start()
@@ -31,12 +42,13 @@ function start()
 	for(i = 0; i < n; i++)
 		for(j = 0; j < n; j++)
 		{
-			var newRect = document.createElementNS(svgNS,"rect");
-			newRect.setAttributeNS(null,"width", size.toString(10));
-			newRect.setAttributeNS(null,"height", size.toString(10));
-			newRect.setAttributeNS(null,"x", (xStart + i*(size + dist)).toString(10));
-			newRect.setAttributeNS(null,"y", (yStart + j*(size + dist)).toString(10));
-			newRect.setAttributeNS(null,"fill","blue");
+			var newRect = document.createElement("rect");
+			newRect.setAttribute("width", size.toString(10));
+			newRect.setAttribute("height", size.toString(10));
+			newRect.setAttribute("x", (xStart + i*(size + dist)).toString(10));
+			newRect.setAttribute("y", (yStart + j*(size + dist)).toString(10));
+			newRect.setAttribute("fill","blue");
 			document.getElementById("secondGroup").appendChild(newRect);	  
 		}
+        add_animation_for_big();
 }
