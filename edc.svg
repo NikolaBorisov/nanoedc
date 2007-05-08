@@ -20,9 +20,11 @@
   </g>
   <g id="firstGroup">
     <rect id="field" width="300" height="300" 
-        x="5%" y="6%" fill="white" >
+        x="50" y="50" fill="white" >
+
     </rect>
   </g>
   <g id="secondGroup">
   </g>
 </svg>
+
