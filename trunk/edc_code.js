@@ -19,15 +19,57 @@ function clean_right()
         
 }
 
-function add_animation_for_big() {
-    var rect = document.getElementById("field");
-    var anim = document.createElement("animation");
+var anim_speed = 10;
+
+function animate_disolve(el) {
+    var width, height, x, y, speed, delay="10";
+    x = parseInt(el.getAttribute("x"));
+    y = parseInt(el.getAttribute("y"));
+    size = parseInt(el.getAttribute("width"));
+    speed = (size/anim_speed).toString(10)+"s";
+
+
+    var anim = document.createElement("animate");
+    anim.setAttribute("attributeType","XML");
     anim.setAttribute("attributeName","width");
-    anim.setAttribute("from","300");
+    anim.setAttribute("from",size.toString(10));
     anim.setAttribute("to","0");
-    anim.setAttribute("dur","5s");
-    rect.appendChild(anim);
+    anim.setAttribute("begin",delay);
+    anim.setAttribute("dur",speed);
+    anim.setAttribute("fill","freeze");
+    el.appendChild(anim);
+
+    anim = document.createElement("animate");
+    anim.setAttribute("attributeType","XML");
+    anim.setAttribute("attributeName","height");
+    anim.setAttribute("from",size.toString(10));
+    anim.setAttribute("to","0");
+    anim.setAttribute("begin",delay);
+    anim.setAttribute("dur",speed);
+    anim.setAttribute("fill","freeze");
+    el.appendChild(anim);
+
+    anim = document.createElement("animate");
+    anim.setAttribute("attributeType","XML");
+    anim.setAttribute("attributeName","x");
+    anim.setAttribute("from",x.toString(10));
+    anim.setAttribute("to",(x+size/2).toString(10));
+    anim.setAttribute("begin",delay);
+    anim.setAttribute("dur",speed);
+    anim.setAttribute("fill","freeze");
+    el.appendChild(anim);
+
+    anim = document.createElement("animate");
+    anim.setAttribute("attributeType","XML");
+    anim.setAttribute("attributeName","y");
+    anim.setAttribute("from",y.toString(10));
+    anim.setAttribute("to",(y+size/2).toString(10));
+    anim.setAttribute("begin",delay);
+    anim.setAttribute("dur",speed);
+    anim.setAttribute("fill","freeze");
+    el.appendChild(anim);
 }
+
   
 function start()
 {
@@ -47,8 +89,9 @@ function start()
 			newRect.setAttribute("height", size.toString(10));
 			newRect.setAttribute("x", (xStart + i*(size + dist)).toString(10));
 			newRect.setAttribute("y", (yStart + j*(size + dist)).toString(10));
-			newRect.setAttribute("fill","blue");
-			document.getElementById("secondGroup").appendChild(newRect);	  
+			newRect.setAttribute("fill","white");
+			document.getElementById("secondGroup").appendChild(newRect);
+                        animate_disolve(newRect);
 		}
-        add_animation_for_big();
+        animate_disolve(document.getElementById("field"));
 }
