@@ -7,7 +7,7 @@
   <defs>
     <pattern id="waterPattern" patternUnits="userSpaceOnUse"
              x="0" y="0" width="504" height="504" >
-      <image id="check" x="0" y="0" width="504" height="504" xlink:href="pattern_water.png" />
+      <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
   </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
