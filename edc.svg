@@ -9,6 +9,10 @@
              x="0" y="0" width="504" height="504" >
       <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
+    <pattern id="sugarPattern" patternUnits="userSpaceOnUse"
+             x="0" y="0" width="200" height="200" >
+      <image id="check" x="0" y="0" width="200" height="200" xlink:href="sugar_pattern.png" />
+    </pattern> 
   </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
   <rect id="water" width="100%" height="60%" x="0" y="0" fill="url(#waterPattern)" />
@@ -20,7 +24,7 @@
   </g>
   <g id="firstGroup">
     <rect id="field" width="300" height="300" 
-        x="50" y="50" fill="white" >
+        x="50" y="50" fill="url(#sugarPattern)" >
 
     </rect>
   </g>
