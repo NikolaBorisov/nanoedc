@@ -10,22 +10,28 @@
       <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
     <pattern id="sugarPattern" patternUnits="userSpaceOnUse"
-             x="0" y="0" width="200" height="200" >
-      <image id="check" x="0" y="0" width="200" height="200" xlink:href="sugar_pattern.png" />
+             x="50" y="50" width="300" height="300" >
+      <image id="check" x="0" y="0" width="300" height="300" xlink:href="cube_pattern.png" />
     </pattern> 
-  </defs>
+    <linearGradient id="verlaufblau2" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+      <stop offset="0%" style="stop-color:#edf1ff" />
+      <stop offset="50%" style="stop-color:#203aac" />
+      <stop offset="100%" style="stop-color:#4993ea" />
+    </linearGradient>  </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
   <rect id="water" width="100%" height="60%" x="0" y="0" fill="url(#waterPattern)" />
   <g id="menu">
   	<g id="button1" onclick="start()">
-  	  <rect width="5%" height="2%" x="2%" y="2%" fill="red" />
-  	  <text x="2%" y="3.9%">Start</text> 
+  	  <rect width="5%" height="2%" x="2%" y="2%" fill="url(#verlaufblau2)" />
+  	  <text x="2%" y="3.9%" fill="white">Start</text> 
+  	</g>
+  	<g id="button2" onclick="initLeft(1)">
+  	  <rect width="50" height="20" x="2%" y="20" rx="3" ry="3" fill="url(#verlaufblau2)" />
+  	  <text x="2.5%" y="35" fill="white">1111</text> 
   	</g>
   </g>
   <g id="firstGroup">
-    <rect id="field" width="300" height="300" 
-        x="50" y="50" fill="url(#sugarPattern)" >
-
+    <rect id="field" width="300" height="300" x="50" y="50" fill="url(#sugarPattern)" >
     </rect>
   </g>
   <g id="secondGroup">
