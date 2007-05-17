@@ -4,7 +4,7 @@
  
 //Namespace
 var svgNS = "http://www.w3.org/2000/svg";
-
+var time0 = (new Date()).valueOf();
 
 /*
  * Deleting the elements on the right side of the screan.
@@ -22,7 +22,8 @@ function clean_right()
 var anim_speed = 10;
 
 function animate_disolve(el) {
-    var width, height, x, y, speed, delay="10";
+    var width, height, x, y, speed, delay=10;
+    var begin = ((new Date()).valueOf() - time0)/1000;
     x = parseInt(el.getAttribute("x"));
     y = parseInt(el.getAttribute("y"));
     size = parseInt(el.getAttribute("width"));
@@ -34,7 +35,7 @@ function animate_disolve(el) {
     anim.setAttribute("attributeName","width");
     anim.setAttribute("from",size.toString(10));
     anim.setAttribute("to","0");
-    anim.setAttribute("begin",delay);
+    anim.setAttribute("begin",begin+delay);
     anim.setAttribute("dur",speed);
     anim.setAttribute("fill","freeze");
     el.appendChild(anim);
@@ -44,7 +45,7 @@ function animate_disolve(el) {
     anim.setAttribute("attributeName","height");
     anim.setAttribute("from",size.toString(10));
     anim.setAttribute("to","0");
-    anim.setAttribute("begin",delay);
+    anim.setAttribute("begin",begin+delay);
     anim.setAttribute("dur",speed);
     anim.setAttribute("fill","freeze");
     el.appendChild(anim);
@@ -54,7 +55,7 @@ function animate_disolve(el) {
     anim.setAttribute("attributeName","x");
     anim.setAttribute("from",x.toString(10));
     anim.setAttribute("to",(x+size/2).toString(10));
-    anim.setAttribute("begin",delay);
+    anim.setAttribute("begin",begin+delay);
     anim.setAttribute("dur",speed);
     anim.setAttribute("fill","freeze");
     el.appendChild(anim);
@@ -64,7 +65,7 @@ function animate_disolve(el) {
     anim.setAttribute("attributeName","y");
     anim.setAttribute("from",y.toString(10));
     anim.setAttribute("to",(y+size/2).toString(10));
-    anim.setAttribute("begin",delay);
+    anim.setAttribute("begin",begin+delay);
     anim.setAttribute("dur",speed);
     anim.setAttribute("fill","freeze");
     el.appendChild(anim);
@@ -89,7 +90,7 @@ function start()
 			newRect.setAttribute("height", size.toString(10));
 			newRect.setAttribute("x", (xStart + i*(size + dist)).toString(10));
 			newRect.setAttribute("y", (yStart + j*(size + dist)).toString(10));
-			newRect.setAttribute("fill","white");
+			newRect.setAttribute("fill","url(#sugarPattern)");
 			document.getElementById("secondGroup").appendChild(newRect);
                         animate_disolve(newRect);
 		}
