@@ -4,6 +4,7 @@
  
 //Namespace
 var svgNS = "http://www.w3.org/2000/svg";
+var is_3D = false;
 var time0 = (new Date()).valueOf();
 
 /*
@@ -96,3 +97,60 @@ function start()
 		}
         animate_disolve(document.getElementById("field"));
 }
+
+function createButton(menu_name, onclick_function, x, y, text)
+{
+    var g, menu;
+    menu = document.getElementById(menu_name);
+    g = document.createElement("g");
+//    g.setAttribute("id", "button" + x.toString(10) + "," + y.toString(10));
+    g.setAttribute("transform", "translate(" + x.toString(10) + "," + y.toString(10) + ")");
+    g.setAttribute("onclick", onclick_function);
+    var r;
+    r = document.createElement("rect");
+    r.setAttribute("width", "50");
+    r.setAttribute("height", "20");
+    r.setAttribute("rx", "3");
+    r.setAttribute("ry", "3");  
+    r.setAttribute("fill", "url(#buttonGradient)");
+    g.appendChild(r);
+
+    var t;
+    t = document.createElement("text");
+    t.setAttribute("x", "17");
+    t.setAttribute("y", "15");
+    t.setAttribute("fill", "white");
+    t.appendChild(document.createTextNode(text));
+    g.appendChild(t);
+    
+    menu.appendChild(g);
+}
+
+function init()
+{
+ //   alert(document.getDocumentElement().getAttribute("height"));
+    if ( is_3D == false ) {
+        createButton("menu_left", "initLeft(1)", 20, 25, "1");
+        createButton("menu_left", "initLeft(4)", 20, 50, "4");
+        createButton("menu_left", "initLeft(9)", 20, 75, "9");
+        createButton("menu_left", "initLeft(16)", 20, 100, "16");
+        createButton("menu_left", "initLeft(25)", 20, 125, "25");
+        createButton("menu_left", "initLeft(49)", 20, 150, "49");
+        createButton("menu_left", "initLeft(100)", 20, 175, "100");
+        createButton("menu_left", "initLeft(144)", 20, 200, "144");
+        createButton("menu_left", "initLeft(400)", 20, 225, "400");
+
+        createButton("menu_right", "initRight(1)", 20, 25, "1");
+        createButton("menu_right", "initRight(4)", 20, 50, "4");
+        createButton("menu_right", "initRight(9)", 20, 75, "9");
+        createButton("menu_right", "initRight(16)", 20, 100, "16");
+        createButton("menu_right", "initRight(25)", 20, 125, "25");
+        createButton("menu_right", "initRight(49)", 20, 150, "49");
+        createButton("menu_right", "initRight(100)", 20, 175, "100");
+        createButton("menu_right", "initRight(144)", 20, 200, "144");
+        createButton("menu_right", "initRight(400)", 20, 225, "400");
+    } else {
+
+    }
+}
+
