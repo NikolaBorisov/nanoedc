@@ -10,7 +10,7 @@
       <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
     <pattern id="sugarPattern" patternUnits="userSpaceOnUse"
-             x="50" y="50" width="300" height="300" >
+             x="0" y="0" width="300" height="300" >
       <image id="check" x="0" y="0" width="300" height="300" xlink:href="cube_pattern.png" />
     </pattern> 
     <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
@@ -20,10 +20,14 @@
     </linearGradient>  </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
   <rect id="water" width="100%" height="60%" x="0" y="0" fill="url(#waterPattern)" />
-  <g id="button1" onclick="start()">
-  	  <rect width="5%" height="2%" x="49%" y="2%" fill="url(#buttonGradient)" />
-  	  <text x="49%" y="3.9%" fill="white">Start</text> 
-  	</g>
+  <g id="simulate_button" onclick="simulate()">
+    <rect width="70" height="20" x="30%" y="10" fill="url(#buttonGradient)" />
+    <text x="30.5%" y="25" fill="white">Simulate</text> 
+  </g>
+  <g id="3d_button" onclick="change_mode()">
+    <rect width="70" height="20" x="37%" y="10" fill="url(#buttonGradient)" />
+    <text x="37.5%" y="25" fill="white">3D</text> 
+  </g>
   
   <svg id="menu_left" x="0%" y="0%" height="60%" width="7%">
   </svg>
@@ -32,12 +36,19 @@
   </svg>
 
 
-  <g id="firstGroup">
-    <rect id="field" width="300" height="300" x="50" y="50" fill="url(#sugarPattern)" >
-    </rect>
+  <g id="leftGroup" transform="translate(80,40)" >
+     <g transform="translate(100,100) scale(0.5)">
+         <rect id="field" width="300" height="300" fill="url(#sugarPattern)" >
+<animateTransform attributeName="transform"
+attributeType="XML" type="scale" from="1" to="0"
+additive="sum" begin="1s" dur="30s" fill="freeze"/>
+       </rect>    
+ 
+
+     </g>
   </g>
 
-  <g id="secondGroup">
+  <g id="rightGroup" transform="translate(700,40)">
   </g>
 
 </svg>
