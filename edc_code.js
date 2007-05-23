@@ -6,7 +6,7 @@
 var svgNS = "http://www.w3.org/2000/svg";
 var is_3D = false;
 var total_amount = 300, square_pattern = "white", cube_pattern = "url(#sugarPattern)";
-var left_scale = 1; right_scale = 1;
+var left_scale = 0; right_scale = 0;
 var sim_time = 60, delay = 2;
 var time0 = (new Date()).valueOf();
 
@@ -23,62 +23,13 @@ function clean_group(group_name)
         
 }
 
-var anim_speed = 10;
-
-function animate_disolve(el) {
-    var width, height, x, y, speed, delay=10;
-    var begin = ((new Date()).valueOf() - time0)/1000;
-    x = parseInt(el.getAttribute("x"));
-    y = parseInt(el.getAttribute("y"));
-    size = parseInt(el.getAttribute("width"));
-    speed = (size/anim_speed).toString(10)+"s";
-
-
-    var anim = document.createElement("animate");
-    anim.setAttribute("attributeType","XML");
-    anim.setAttribute("attributeName","width");
-    anim.setAttribute("from",size.toString(10));
-    anim.setAttribute("to","0");
-    anim.setAttribute("begin",begin+delay);
-    anim.setAttribute("dur",speed);
-    anim.setAttribute("fill","freeze");
-    el.appendChild(anim);
-
-    anim = document.createElement("animate");
-    anim.setAttribute("attributeType","XML");
-    anim.setAttribute("attributeName","height");
-    anim.setAttribute("from",size.toString(10));
-    anim.setAttribute("to","0");
-    anim.setAttribute("begin",begin+delay);
-    anim.setAttribute("dur",speed);
-    anim.setAttribute("fill","freeze");
-    el.appendChild(anim);
-
-    anim = document.createElement("animate");
-    anim.setAttribute("attributeType","XML");
-    anim.setAttribute("attributeName","x");
-    anim.setAttribute("from",x.toString(10));
-    anim.setAttribute("to",(x+size/2).toString(10));
-    anim.setAttribute("begin",begin+delay);
-    anim.setAttribute("dur",speed);
-    anim.setAttribute("fill","freeze");
-    el.appendChild(anim);
-
-    anim = document.createElement("animate");
-    anim.setAttribute("attributeType","XML");
-    anim.setAttribute("attributeName","y");
-    anim.setAttribute("from",y.toString(10));
-    anim.setAttribute("to",(y+size/2).toString(10));
-    anim.setAttribute("begin",begin+delay);
-    anim.setAttribute("dur",speed);
-    anim.setAttribute("fill","freeze");
-    el.appendChild(anim);
-}
-
-
+/*
+ * Initializes the screen by putting the buttons. 
+ */
 function init()
 {
- //   alert(document.getDocumentElement().getAttribute("height"));
+    left_scale = 0;
+    right_scale = 0;
     if ( is_3D == false ) {
         createButton("menu_left", "init_left_or_right(1,\"leftGroup\")", 20, 25, "1");
         createButton("menu_left", "init_left_or_right(4,\"leftGroup\")", 20, 50, "4");
@@ -114,12 +65,39 @@ function init()
     }
 }
 
+function reload() {
+    //Clean old animations and buttons and objects
+    clean_group("leftGroup");
+    clean_group("rightGroup");
+    left_scale = right_scale = 0;
+}
+
+/*
+ * Changes the mode of the simulation from 2D to 3D and back.
+ */
 function change_mode() {
+    var text;
+    if ( is_3D ) {
+        total_amount = 300;
+        text = "3D";
+    } else {
+        total_amount = 200;
+        text = "2D";
+    }
     is_3D = !is_3D;
+
+    //Clean old animations and buttons and objects
     clean_group("leftGroup");
     clean_group("rightGroup");
     clean_group("menu_left");
     clean_group("menu_right");
+    
+    //Change the text inside the button
+    var txt = document.getElementById("3d_button_text");
+    txt.removeChild(txt.childNodes.item(0));
+    txt.appendChild(document.createTextNode(text));
+
+    //Recreate appropriate buttons
     init();
 }
 
@@ -128,9 +106,9 @@ function createButton(menu_name, onclick_function, x, y, text)
     var g, menu;
     menu = document.getElementById(menu_name);
     g = document.createElement("g");
-//    g.setAttribute("id", "button" + x.toString(10) + "," + y.toString(10));
     g.setAttribute("transform", "translate(" + x.toString(10) + "," + y.toString(10) + ")");
     g.setAttribute("onclick", onclick_function);
+
     var r;
     r = document.createElement("rect");
     r.setAttribute("width", "50");
@@ -198,7 +176,7 @@ function init_left_or_right(x,group_name) {
                 var r = createSquareOrCube(total_amount);
                 g.appendChild(r);
                 var group = document.getElementById(group_name);
-                group.appendChild(g);            
+                group.appendChild(g);
             }
         }
 
@@ -227,12 +205,14 @@ function createSquareOrCube(size) {
 
 function simulate() {
     var left_gr = document.getElementById("leftGroup");
-    for (i=0 ; i<left_gr.childNodes.length ; i++ ) {
+    var i;
+    for (i=0 ; i<left_gr.childNodes.length && left_scale ; i++ ) {
         animate_obj(left_gr.childNodes.item(i), left_scale);
     }
 
     var right_gr = document.getElementById("rightGroup");
-    for (i=0 ; i<right_gr.childNodes.length ; i++ ) {
+//    alert(right_gr.firstChild);
+    for (i=0 ; i<right_gr.childNodes.length && right_scale ; i++ ) {
         animate_obj(right_gr.childNodes.item(i), right_scale);
     }
 
