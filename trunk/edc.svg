@@ -10,8 +10,8 @@
       <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
     <pattern id="sugarPattern" patternUnits="userSpaceOnUse"
-             x="0" y="0" width="300" height="300" >
-      <image id="check" x="0" y="0" width="300" height="300" xlink:href="cube_pattern.png" />
+             x="0" y="0" width="200" height="200" >
+      <image id="check" x="0" y="0" width="200" height="200" xlink:href="cube_pattern_white.png" />
     </pattern> 
     <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
       <stop offset="0%" style="stop-color:#edf1ff" />
@@ -26,7 +26,11 @@
   </g>
   <g id="3d_button" onclick="change_mode()">
     <rect width="70" height="20" x="37%" y="10" fill="url(#buttonGradient)" />
-    <text x="37.5%" y="25" fill="white">3D</text> 
+    <text id="3d_button_text" x="37.5%" y="25" fill="white">3D</text> 
+  </g>
+  <g id="reload" onclick="reload()">
+    <rect width="70" height="20" x="44%" y="10" fill="url(#buttonGradient)" />
+    <text x="44.5%" y="25" fill="white">Reload</text> 
   </g>
   
   <svg id="menu_left" x="0%" y="0%" height="60%" width="7%">
@@ -37,15 +41,6 @@
 
 
   <g id="leftGroup" transform="translate(80,40)" >
-     <g transform="translate(100,100) scale(0.5)">
-         <rect id="field" width="300" height="300" fill="url(#sugarPattern)" >
-<animateTransform attributeName="transform"
-attributeType="XML" type="scale" from="1" to="0"
-additive="sum" begin="1s" dur="30s" fill="freeze"/>
-       </rect>    
- 
-
-     </g>
   </g>
 
   <g id="rightGroup" transform="translate(700,40)">
