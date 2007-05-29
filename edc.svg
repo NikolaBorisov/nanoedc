@@ -9,9 +9,13 @@
              x="0" y="0" width="504" height="504" >
       <image id="check" x="0" y="0" width="504" height="504" xlink:href="water_pattern.png" />
     </pattern> 
-    <pattern id="sugarPattern" patternUnits="userSpaceOnUse"
+    <pattern id="sugarCubePattern" patternUnits="userSpaceOnUse"
              x="0" y="0" width="200" height="200" >
       <image id="check" x="0" y="0" width="200" height="200" xlink:href="cube_pattern_white.png" />
+    </pattern> 
+    <pattern id="sugarSquarePattern" patternUnits="userSpaceOnUse"
+             x="0" y="0" width="300" height="300" >
+      <image id="check" x="0" y="0" width="300" height="300" xlink:href="sugar_pattern.png" />
     </pattern> 
     <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
       <stop offset="0%" style="stop-color:#edf1ff" />
@@ -19,7 +23,7 @@
       <stop offset="100%" style="stop-color:#4993ea" />
     </linearGradient>  </defs>
   <script type="text/ecmascript" xlink:href="edc_code.js" />
-  <rect id="water" width="100%" height="60%" x="0" y="0" fill="url(#waterPattern)" />
+  <rect id="water" width="100%" height="80%" x="0" y="0" fill="url(#waterPattern)" />
   <g id="simulate_button" onclick="simulate()">
     <rect width="70" height="20" x="30%" y="10" fill="url(#buttonGradient)" />
     <text x="30.5%" y="25" fill="white">Simulate</text> 
@@ -43,8 +47,15 @@
   <g id="leftGroup" transform="translate(80,40)" >
   </g>
 
-  <g id="rightGroup" transform="translate(700,40)">
+  <g id="rightGroup" transform="translate(630,40)">
   </g>
+
+  <svg id="textFieldLeft" x="0%" y="80%" height="20%" width="50%">
+  </svg>
+
+  <svg id="textFieldRight" x="50%" y="80%" height="20%" width="50%">
+  </svg>
+
 
 </svg>
 
