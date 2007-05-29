@@ -5,7 +5,7 @@
 //Namespace
 var svgNS = "http://www.w3.org/2000/svg";
 var is_3D = false;
-var total_amount = 300, square_pattern = "white", cube_pattern = "url(#sugarPattern)";
+var total_amount = 300, big_side = 10, square_pattern = "url(#sugarSquarePattern)", cube_pattern = "url(#sugarCubePattern)";
 var left_scale = 0; right_scale = 0;
 var sim_time = 60, delay = 2;
 var time0 = (new Date()).valueOf();
@@ -69,6 +69,8 @@ function reload() {
     //Clean old animations and buttons and objects
     clean_group("leftGroup");
     clean_group("rightGroup");
+    clean_group("textFieldLeft");
+    clean_group("textFieldRight");
     left_scale = right_scale = 0;
 }
 
@@ -87,10 +89,10 @@ function change_mode() {
     is_3D = !is_3D;
 
     //Clean old animations and buttons and objects
-    clean_group("leftGroup");
-    clean_group("rightGroup");
+    reload();
     clean_group("menu_left");
     clean_group("menu_right");
+
     
     //Change the text inside the button
     var txt = document.getElementById("3d_button_text");
@@ -134,6 +136,9 @@ var dist_between = 12;
 
 function init_left_or_right(x,group_name) {
     clean_group(group_name);
+    clean_group("textFieldLeft");
+    clean_group("textFieldRight");
+
 
     
     var i, j;
@@ -204,18 +209,80 @@ function createSquareOrCube(size) {
 
 
 function simulate() {
-    var left_gr = document.getElementById("leftGroup");
     var i;
+    
+    var left_gr = document.getElementById("leftGroup");
     for (i=0 ; i<left_gr.childNodes.length && left_scale ; i++ ) {
         animate_obj(left_gr.childNodes.item(i), left_scale);
     }
 
     var right_gr = document.getElementById("rightGroup");
-//    alert(right_gr.firstChild);
     for (i=0 ; i<right_gr.childNodes.length && right_scale ; i++ ) {
         animate_obj(right_gr.childNodes.item(i), right_scale);
     }
 
+    add_text();
+}
+
+function add_text() {
+    if ( left_scale ) {
+        add_text_to(document.getElementById("textFieldLeft"), left_scale);
+    }
+    if ( right_scale ) {
+        add_text_to(document.getElementById("textFieldRight"), right_scale);   
+    }
+}
+
+function add_text_to(obj, scale) {
+    if ( !is_3D ) {
+        var side = big_side*scale;
+        var num_sq = (big_side/side)*(big_side/side);
+
+        var single_sq_area = side*side;
+        var total_area = big_side*big_side;
+        var single_sq_cir = 4*side;
+        var total_cir = num_sq*single_sq_cir;
+        var cir_to_area_ratio = total_cir/total_area;
+        var time_to_dissolve = sim_time*scale;
+
+
+        create_text_el(obj, 15, "single square side lenght: ", side);
+        create_text_el(obj, 30, "number of squares: ", num_sq);
+        create_text_el(obj, 45, "single square area: ", single_sq_area);
+        create_text_el(obj, 60, "total area: ", total_area);
+        create_text_el(obj, 75, "single square circumference: ", single_sq_cir);
+        create_text_el(obj, 90, "total circumference: ", total_cir);
+        create_text_el(obj, 105, "circumference/area ratio: ", cir_to_area_ratio);
+        create_text_el(obj, 120, "time needed to dissolve: ", time_to_dissolve);
+    } else {
+        var side = big_side*scale;
+        var num_cubes = (big_side/side)*(big_side/side)*(big_side/side);
+
+        var single_cube_volume = side*side*side;
+        var total_volume = big_side*big_side*big_side;
+        var single_cube_surface_area = 6*side*side;
+        var total_surface_area = num_cubes*single_cube_surface_area;
+        var S_to_V_ratio = total_surface_area/total_volume;
+        var time_to_dissolve = sim_time*scale;
+
+        create_text_el(obj, 15, "single cube side lenght: ", side);
+        create_text_el(obj, 30, "number of cubes: ", num_cubes);
+        create_text_el(obj, 45, "single cube volume: ", single_cube_volume);
+        create_text_el(obj, 60, "total volume: ", total_volume);
+        create_text_el(obj, 75, "single cube surface area: ", single_cube_surface_area);
+        create_text_el(obj, 90, "total surface area: ", total_surface_area);
+        create_text_el(obj, 105, "surface area/volume ratio: ", S_to_V_ratio);
+        create_text_el(obj, 120, "time needed to dissolve: ", time_to_dissolve);
+
+    }
+}
+
+function create_text_el(obj, y, text, num) {
+    var t = document.createElement("text");
+    var num_text = (Math.round(num*1000)/1000).toString(10);
+    t.setAttribute("y", y.toString(10));
+    t.appendChild(document.createTextNode(text+num_text));
+    obj.appendChild(t);
 }
 
 function animate_obj(gr, scale) {
