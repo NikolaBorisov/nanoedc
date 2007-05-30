@@ -250,9 +250,9 @@ function add_text_to(obj, scale) {
         create_text_el(obj, 30, "number of squares: ", num_sq);
         create_text_el(obj, 45, "single square area: ", single_sq_area);
         create_text_el(obj, 60, "total area: ", total_area);
-        create_text_el(obj, 75, "single square circumference: ", single_sq_cir);
-        create_text_el(obj, 90, "total circumference: ", total_cir);
-        create_text_el(obj, 105, "circumference/area ratio: ", cir_to_area_ratio);
+        create_text_el(obj, 75, "single square perimeter: ", single_sq_cir);
+        create_text_el(obj, 90, "total perimeter: ", total_cir);
+        create_text_el(obj, 105, "perimeter/area ratio: ", cir_to_area_ratio);
         create_text_el(obj, 120, "time needed to dissolve: ", time_to_dissolve);
     } else {
         var side = big_side*scale;
